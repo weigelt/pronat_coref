@@ -27,7 +27,6 @@ import edu.kit.ipd.parse.contextanalyzer.util.GraphUtils;
 import edu.kit.ipd.parse.luna.data.MissingDataException;
 import edu.kit.ipd.parse.luna.graph.IGraph;
 import edu.kit.ipd.parse.luna.graph.INode;
-import edu.kit.ipd.parse.ner.NERTagger;
 import edu.kit.ipd.parse.ontology_connection.Domain;
 import edu.stanford.nlp.dcoref.Dictionaries;
 import net.sf.extjwnl.dictionary.Dictionary;
@@ -570,7 +569,7 @@ public class BasicEntityRecognizer {
 	}
 
 	private boolean isActingSubject(INode node) {
-		String ner = (String) node.getAttributeValue(NERTagger.NER_ATTRIBUTE_NAME);
+		String ner = (String) node.getAttributeValue("ner");
 		/*
 		 * SRL produces more failures
 		 * 
