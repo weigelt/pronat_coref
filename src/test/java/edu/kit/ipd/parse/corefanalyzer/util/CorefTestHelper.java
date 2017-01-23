@@ -25,7 +25,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import edu.kit.ipd.parse.conditionDetection.CommandType;
 import edu.kit.ipd.parse.contextanalyzer.data.Action;
 import edu.kit.ipd.parse.contextanalyzer.data.Context;
 import edu.kit.ipd.parse.contextanalyzer.data.entities.Entity;
@@ -34,7 +33,6 @@ import edu.kit.ipd.parse.contextanalyzer.data.relations.ActionEntityRelation;
 import edu.kit.ipd.parse.contextanalyzer.data.relations.EntityEntityRelation;
 import edu.kit.ipd.parse.contextanalyzer.data.relations.ReferentRelation;
 import edu.kit.ipd.parse.contextanalyzer.data.relations.Relation;
-import edu.kit.ipd.parse.luna.graph.IGraph;
 import edu.kit.ipd.parse.luna.graph.INode;
 
 /**
@@ -238,90 +236,6 @@ public final class CorefTestHelper {
 				}
 			}
 		}
-	}
-
-	public static void setCommands(IGraph graph, List<int[]> ifs, List<int[]> thens, List<int[]> elses) {
-		Context context = Context.readFromGraph(graph);
-		for (int[] If : ifs) {
-			for (Entity entity : context.getEntities()) {
-				boolean match = true;
-				for (INode node : entity.getReference()) {
-					if ((int) node.getAttributeValue("position") < If[0] || (int) node.getAttributeValue("position") > If[1]) {
-						match = false;
-					}
-				}
-				if (match) {
-					entity.setCommandType(CommandType.IF_STATEMENT);
-				}
-
-			}
-			for (Action action : context.getActions()) {
-				boolean match = true;
-				for (INode node : action.getReference()) {
-					if ((int) node.getAttributeValue("position") < If[0] || (int) node.getAttributeValue("position") > If[1]) {
-						match = false;
-					}
-				}
-				if (match) {
-					action.setCommandType(CommandType.IF_STATEMENT);
-				}
-
-			}
-		}
-		for (int[] then : thens) {
-			for (Entity entity : context.getEntities()) {
-				boolean match = true;
-				for (INode node : entity.getReference()) {
-					if ((int) node.getAttributeValue("position") < then[0] || (int) node.getAttributeValue("position") > then[1]) {
-						match = false;
-					}
-				}
-				if (match) {
-					entity.setCommandType(CommandType.THEN_STATEMENT);
-				}
-
-			}
-			for (Action action : context.getActions()) {
-				boolean match = true;
-				for (INode node : action.getReference()) {
-					if ((int) node.getAttributeValue("position") < then[0] || (int) node.getAttributeValue("position") > then[1]) {
-						match = false;
-					}
-				}
-				if (match) {
-					action.setCommandType(CommandType.THEN_STATEMENT);
-				}
-
-			}
-		}
-		for (int[] Else : elses) {
-			for (Entity entity : context.getEntities()) {
-				boolean match = true;
-				for (INode node : entity.getReference()) {
-					if ((int) node.getAttributeValue("position") < Else[0] || (int) node.getAttributeValue("position") > Else[1]) {
-						match = false;
-					}
-				}
-				if (match) {
-					entity.setCommandType(CommandType.ELSE_STATEMENT);
-				}
-
-			}
-			for (Action action : context.getActions()) {
-				boolean match = true;
-				for (INode node : action.getReference()) {
-					if ((int) node.getAttributeValue("position") < Else[0] || (int) node.getAttributeValue("position") > Else[1]) {
-						match = false;
-					}
-				}
-				if (match) {
-					action.setCommandType(CommandType.ELSE_STATEMENT);
-				}
-
-			}
-		}
-		context.printToGraph(graph);
-
 	}
 
 	public static class TestResult {

@@ -3,7 +3,7 @@
  */
 package edu.kit.ipd.parse.corefanalyzer.util;
 
-import edu.kit.ipd.parse.conditionDetection.CommandType;
+import edu.kit.ipd.parse.contextanalyzer.data.CommandType;
 import edu.kit.ipd.parse.contextanalyzer.data.entities.Entity;
 import edu.kit.ipd.parse.contextanalyzer.data.entities.GrammaticalNumber;
 import edu.kit.ipd.parse.contextanalyzer.data.entities.SubjectEntity.Gender;
