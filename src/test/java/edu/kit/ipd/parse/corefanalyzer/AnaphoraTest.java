@@ -3,6 +3,7 @@ package edu.kit.ipd.parse.corefanalyzer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,8 +17,10 @@ import edu.kit.ipd.parse.luna.data.MissingDataException;
 import edu.kit.ipd.parse.luna.data.PrePipelineData;
 import edu.kit.ipd.parse.luna.graph.IGraph;
 import edu.kit.ipd.parse.luna.pipeline.PipelineStageException;
+import edu.kit.ipd.parse.luna.tools.ConfigManager;
 import edu.kit.ipd.parse.luna.tools.StringToHypothesis;
 import edu.kit.ipd.parse.ner.NERTagger;
+import edu.kit.ipd.parse.ontology_connection.Domain;
 import edu.kit.ipd.parse.shallownlp.ShallowNLP;
 import edu.kit.ipd.parse.srlabeler.SRLabeler;
 
@@ -31,9 +34,31 @@ public class AnaphoraTest {
 	GraphBuilder graphBuilder;
 	PrePipelineData ppd;
 	HashMap<String, Text> texts;
+	private static Properties props;
 
 	@Before
 	public void setUp() {
+		props = ConfigManager.getConfiguration(Domain.class);
+		props.setProperty("ONTOLOGY_PATH", "/ontology.owl");
+		props.setProperty("SYSTEM", "System");
+		props.setProperty("METHOD", "Method");
+		props.setProperty("PARAMETER", "Parameter");
+		props.setProperty("DATATYPE", "DataType");
+		props.setProperty("VALUE", "Value");
+		props.setProperty("STATE", "State");
+		props.setProperty("OBJECT", "Object");
+		props.setProperty("SYSTEM_HAS_METHOD", "hasMethod");
+		props.setProperty("STATE_ASSOCIATED_STATE", "associatedState");
+		props.setProperty("STATE_ASSOCIATED_OBJECT", "associatedObject");
+		props.setProperty("STATE_CHANGING_METHOD", "changingMethod");
+		props.setProperty("METHOD_CHANGES_STATE", "changesStateTo");
+		props.setProperty("METHOD_HAS_PARAMETER", "hasParameter");
+		props.setProperty("OBJECT_HAS_STATE", "hasState");
+		props.setProperty("OBJECT_SUB_OBJECT", "subObject");
+		props.setProperty("OBJECT_SUPER_OBJECT", "superObject");
+		props.setProperty("PARAMETER_OF_DATA_TYPE", "ofDataType");
+		props.setProperty("DATATYPE_HAS_VALUE", "hasValue");
+		props.setProperty("PRIMITIVE_TYPES", "String,int,double,float,short,char,boolean,long");
 		graphBuilder = new GraphBuilder();
 		graphBuilder.init();
 		nerTagger = new NERTagger();
@@ -47,6 +72,7 @@ public class AnaphoraTest {
 		contextAnalyzer.init();
 		coref = new CorefAnalyzer();
 		coref.init();
+
 	}
 
 	@Test
