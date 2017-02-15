@@ -11,6 +11,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -124,6 +125,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void oneTwo() {
 		ppd = new PrePipelineData();
@@ -149,6 +151,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void oneThree() {
 		ppd = new PrePipelineData();
@@ -199,6 +202,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void twoTwo() {
 		ppd = new PrePipelineData();
@@ -272,6 +276,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void threeTwo() {
 		ppd = new PrePipelineData();
@@ -296,6 +301,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void threeTwoMultiple() {
 		ppd = new PrePipelineData();
@@ -379,6 +385,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void fourTwo() {
 		ppd = new PrePipelineData();
@@ -451,6 +458,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void fiveTwo() {
 		ppd = new PrePipelineData();
@@ -755,6 +763,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void nineThree() {
 		ppd = new PrePipelineData();
@@ -1123,6 +1132,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void iffiveOne() {
 		ppd = new PrePipelineData();
@@ -1330,6 +1340,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void multiple() {
 		ppd = new PrePipelineData();
@@ -1366,6 +1377,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void searchEntities() {
 		Set<String> actions = new HashSet<>();
@@ -1407,6 +1419,7 @@ public class CorpusEvaluation {
 		System.out.println("Actions: " + actions.toString());
 	}
 
+	@Ignore
 	@Test
 	public void printSNLP() {
 		for (String id : texts.keySet()) {
@@ -1427,6 +1440,7 @@ public class CorpusEvaluation {
 		}
 	}
 
+	@Ignore
 	@Test
 	public void evalBasic() {
 		int tp = 0;
@@ -1479,6 +1493,7 @@ public class CorpusEvaluation {
 		}
 	}
 
+	@Ignore
 	@Test
 	public void evalMultipleNew() {
 		int tp = 0;
@@ -1545,6 +1560,7 @@ public class CorpusEvaluation {
 		}
 	}
 
+	@Ignore
 	@Test
 	public void evalMultipleKorpusImpl() {
 		int tp = 0;
@@ -1613,6 +1629,7 @@ public class CorpusEvaluation {
 		}
 	}
 
+	@Ignore
 	@Test
 	public void evalMultipleKorpusElse() {
 		int tp = 0;
@@ -1680,6 +1697,7 @@ public class CorpusEvaluation {
 		}
 	}
 
+	@Ignore
 	@Test
 	public void printActions() {
 
@@ -1748,6 +1766,7 @@ public class CorpusEvaluation {
 
 	}
 
+	@Ignore
 	@Test
 	public void printConcepts() {
 

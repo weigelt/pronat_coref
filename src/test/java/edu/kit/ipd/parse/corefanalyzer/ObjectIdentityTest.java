@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Properties;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.kit.ipd.parse.contextanalyzer.ContextAnalyzer;
@@ -73,6 +74,7 @@ public class ObjectIdentityTest {
 		coref.init();
 	}
 
+	@Ignore
 	@Test
 	public void actionPossibleTest() {
 		ppd = new PrePipelineData();

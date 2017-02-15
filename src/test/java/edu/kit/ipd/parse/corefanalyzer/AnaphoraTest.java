@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Properties;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.kit.ipd.parse.contextanalyzer.ContextAnalyzer;
@@ -145,6 +146,7 @@ public class AnaphoraTest {
 
 	}
 
+	@Ignore
 	@Test
 	public void groupTest3() {
 		ppd = new PrePipelineData();
@@ -218,6 +220,7 @@ public class AnaphoraTest {
 
 	}
 
+	@Ignore
 	@Test
 	public void diffTest() {
 		ppd = new PrePipelineData();
@@ -244,6 +247,7 @@ public class AnaphoraTest {
 
 	}
 
+	@Ignore
 	@Test
 	public void diffTest2() {
 		ppd = new PrePipelineData();
@@ -308,6 +312,7 @@ public class AnaphoraTest {
 
 	}
 
+	@Ignore
 	@Test
 	public void multiplePossessive() {
 		ppd = new PrePipelineData();
@@ -377,6 +382,7 @@ public class AnaphoraTest {
 
 	}
 
+	@Ignore
 	@Test
 	public void multipleScenario1() {
 		ppd = new PrePipelineData();
@@ -415,6 +421,7 @@ public class AnaphoraTest {
 
 	}
 
+	@Ignore
 	@Test
 	public void multipleScenario2() {
 		ppd = new PrePipelineData();
