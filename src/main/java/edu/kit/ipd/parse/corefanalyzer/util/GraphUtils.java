@@ -6,6 +6,7 @@ package edu.kit.ipd.parse.corefanalyzer.util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +58,7 @@ public final class GraphUtils {
 			if (graph instanceof ParseGraph) {
 				ParseGraph pGraph = (ParseGraph) graph;
 				INode current = pGraph.getFirstUtteranceNode();
-				List<? extends IArc> outgoingNextArcs = current.getOutgoingArcsOfType(nextArcType);
+				Set<? extends IArc> outgoingNextArcs = current.getOutgoingArcsOfType(nextArcType);
 				boolean hasNext = !outgoingNextArcs.isEmpty();
 				result.add(current);
 				while (hasNext) {
@@ -85,7 +86,7 @@ public final class GraphUtils {
 
 	public static final INode getNextNode(INode current, IGraph graph) {
 		IArcType arcType = graph.getArcType(NEXT_ARCTYPE_NAME);
-		List<? extends IArc> outgoingNextArcs = current.getOutgoingArcsOfType(arcType);
+		Set<? extends IArc> outgoingNextArcs = current.getOutgoingArcsOfType(arcType);
 		if (!outgoingNextArcs.isEmpty()) {
 			if (outgoingNextArcs.size() == 1) {
 				return outgoingNextArcs.toArray(new IArc[outgoingNextArcs.size()])[0].getTargetNode();
@@ -100,7 +101,7 @@ public final class GraphUtils {
 
 	public static final INode getPreviousNode(INode current, IGraph graph) {
 		IArcType arcType = graph.getArcType(NEXT_ARCTYPE_NAME);
-		List<? extends IArc> incomingNextArcs = current.getIncomingArcsOfType(arcType);
+		Set<? extends IArc> incomingNextArcs = current.getIncomingArcsOfType(arcType);
 		if (!incomingNextArcs.isEmpty()) {
 			if (incomingNextArcs.size() == 1) {
 				return incomingNextArcs.toArray(new IArc[incomingNextArcs.size()])[0].getSourceNode();
@@ -127,7 +128,7 @@ public final class GraphUtils {
 		INode current = arc.getTargetNode();
 		result.add(current);
 		if (hasOutgoingArcOfType(current, arc.getType().getName(), graph)) {
-			List<? extends IArc> arcs = current.getOutgoingArcsOfType(arc.getType());
+			Set<? extends IArc> arcs = current.getOutgoingArcsOfType(arc.getType());
 			for (IArc outArc : arcs) {
 				result.addAll(getNodesOfArcChain(outArc, graph));
 			}
