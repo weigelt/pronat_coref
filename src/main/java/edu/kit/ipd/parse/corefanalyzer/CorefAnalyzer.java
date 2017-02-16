@@ -56,7 +56,7 @@ public class CorefAnalyzer extends AbstractAgent {
 	 * @see edu.kit.ipd.parse.luna.agent.AbstractAgent#exec()
 	 */
 	@Override
-	protected void exec() {
+	public void exec() {
 		context = readContextFromGraph();
 		ICorefAnalyzer analyzer;
 		if (!context.isEmpty()) {
