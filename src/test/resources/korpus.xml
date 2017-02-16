@@ -493,12 +493,12 @@
 <text name="28.1">Armar could you please bring me the popcorn which is on the left side of the green cup Thank you
 	<coref start="2" end="0"/>
 </text>
-<text name="28.2">Armar i need all my cups tonight for the party so please also place the green cup from the table into the dishwasher and switch it on but don't forget to close the dishwasher before okay
+<text name="28.2">Armar i need all my cups tonight for the party so please also place the green cup from the table into the dishwasher and switch it on but do not forget to close the dishwasher before okay
 	<coref start="4" end="1"/>
 	<coref start="25" end="22"/>
 	<coref start="33" end="22"/>
 </text>
-<text name="28.3">Good morning Armar I would like to have orange juice for breakfast so could you please place it from the fridge onto the black table but don't confuse it with the multi vitamine juice okay thank you
+<text name="28.3">Good morning Armar I would like to have orange juice for breakfast so could you please place it from the fridge onto the black table but do not confuse it with the multi vitamine juice okay thank you
 	<coref start="14" end="2"/>
 	<coref start="17" end="9"/>
 	<coref start="29" end="17"/>
@@ -641,9 +641,7 @@
 	<coref start="22" end="4"/>
 	<coref start="36" end="28"/>
 </text>
-<text name="s6p07">Go to the table and grab the green cup then go to the fridge and open it take the Apollinaris bottle and open it
- pour the bottle into the cup until it's full put down both objects onto the nearest table and close the fridge
-  then go to the dishwasher open it and then take all the red cups and place them into the cupboard
+<text name="s6p07">Go to the table and grab the green cup then go to the fridge and open it take the Apollinaris bottle and open it pour the bottle into the cup until it is full put down both objects onto the nearest table and close the fridge then go to the dishwasher open it and then take all the red cups and place them into the cupboard
 	<coref start="16" end="13"/>
 	<coref start="23" end="20"/>
 	<coref start="26" end="20"/>
@@ -656,39 +654,27 @@
 	<coref start="62" end="59"/>
 
 </text>
-<text name="s6p08">Hey Armar I'm thirsty please eh grab the green cup on the table and fill it with water the water is in the fridge where you have to eh open the door first
-afterwards please grab the red cups out of the dishwasher and store them into the cupboard
+<text name="s6p08">Hey Armar I am thirsty please eh grab the green cup on the table and fill it with water the water is in the fridge where you have to eh open the door first afterwards please grab the red cups out of the dishwasher and store them into the cupboard
 	<coref start="16" end="10"/>
 	<coref start="20" end="18"/>
 	<coref start="26" end="1"/>
 	<coref start="46" end="39"/>
 </text>
-<text name="s6p09">Hey Armar can you get me the water from the fridge and put it in the green cup and bring it to me 
-afterwards please take out the red cups from the dishwasher and put them in the cupboard
+<text name="s6p09">Hey Armar can you get me the water from the fridge and put it in the green cup and bring it to me afterwards please take out the red cups from the dishwasher and put them in the cupboard
 	<coref start="3" end="1"/>
 	<coref start="13" end="7"/>
 	<coref start="20" end="17"/>
 	<coref start="22" end="5"/>
 	<coref start="35" end="29"/>
 </text>
-<text name="s6p10">Go to the fridge open the fridge door then take the water bottle out close the fridge door then go to the table and open the water bottle 
-fill the green cup with the water 
-and then bring the cup to me 
-go to the dishwasher ahm take the two red cups out of the dishwasher and put them on the cupboard
+<text name="s6p10">Go to the fridge open the fridge door then take the water bottle out close the fridge door then go to the table and open the water bottle fill the green cup with the water and then bring the cup to me go to the dishwasher ahm take the two red cups out of the dishwasher and put them on the cupboard
 	<coref start="17" end="7"/>
 	<coref start="27" end="12"/>
 	<coref start="39" end="31"/>
 	<coref start="55" end="45"/>
 	<coref start="58" end="51"/>
 </text>
-<text name="s7p01">Ok first step go to the dishwasher and open it
-take out one plate and give the plate a wash
-then place the plate somewhere on the table
-go to the fridge open it and grab an instant meal
-now take the instant meal go to the place where you placed the plate and put the instant meal on the plate 
-now take the whole plate with the instant meal go to the microwave open it and put the plate in the microwave
-now activate the microwave
-when it's done open the microwave grab the plate go to the table and put the plate on it
+<text name="s7p01">Ok first step go to the dishwasher and open it take out one plate and give the plate a wash then place the plate somewhere on the table go to the fridge open it and grab an instant meal now take the instant meal go to the place where you placed the plate and put the instant meal on the plate now take the whole plate with the instant meal go to the microwave open it and put the plate in the microwave now activate the microwave when it is done open the microwave grab the plate go to the table and put the plate on it
 	<coref start="9" end="6"/>
 	<coref start="17" end="13"/>
 	<coref start="23" end="17"/> 
@@ -715,11 +701,7 @@ when it's done open the microwave grab the plate go to the table and put the pla
 	<coref start="104" end="96"/>
 	<coref start="106" end="100"/>
 </text>
-<text name="s7p02">Armar please prepare me a meal
-there are plates in the dishwasher please get a plate from the dishwasher and clean it
-afterwards put the instant meal from the fridge on it and warm it in the microwave for two minutes 
-when it is done get the plate out of the microwave and put it on the table
-then you are done
+<text name="s7p02">Armar please prepare me a meal there are plates in the dishwasher please get a plate from the dishwasher and clean it afterwards put the instant meal from the fridge on it and warm it in the microwave for two minutes when it is done get the plate out of the microwave and put it on the table then you are done
 	<coref start="18" end="11"/>
 	<coref start="21" end="15"/>
 	<coref start="31" end="21"/>
@@ -730,13 +712,7 @@ then you are done
 	<coref start="54" end="47"/>
 	<coref start="59" end="0"/>
 </text>
-<text name="s7p03">Go to the dishwasher open the dishwasher take one plate and close the dishwasher again
-go to the sink with the plate and clean the plate
-afterwards go to the fridge open the fridge take one instant meal out of the fridge and close the fridge again
-then open the instant meal put the content on a plate go to the microwave open the microwave and put the plate inside close the microwave and press start
-wait until it's warm 
-say it's finished with a pling and ready
-open the microwave take the plate out close the microwave again and take the plate to the table and put the plate on the table
+<text name="s7p03">Go to the dishwasher open the dishwasher take one plate and close the dishwasher again go to the sink with the plate and clean the plate afterwards go to the fridge open the fridge take one instant meal out of the fridge and close the fridge again then open the instant meal put the content on a plate go to the microwave open the microwave and put the plate inside close the microwave and press start wait until it is warm say it is finished with a pling and ready open the microwave take the plate out close the microwave again and take the plate to the table and put the plate on the table
 	<coref start="6" end="3"/>
 	<coref start="13" end="6"/>
 	<coref start="21" end="9"/>
@@ -760,13 +736,7 @@ open the microwave take the plate out close the microwave again and take the pla
 	<coref start="111" end="104"/>
 	<coref start="114" end="107"/>
 </text>
-<text name="s7p04">Hello Armar i want you to prepare a meal for me 
-ah therefore you go to the dishwasher take out any of the plates then you go to the sink and wash it ahm then you put the plate
- on the table and you go to the fridge you open the fridge and take out the instant meal from the fridge and you close the fridge
-  again you go to the table and put the instant meal on the plate you
-   just washed 
-ah then you take the plate with the meal and go to the microwave open the microwave put in the meal close the microwave heat up the meal
- ahm take out the meal from the microwave and bring it to the table and eh yah put it there
+<text name="s7p04">Hello Armar i want you to prepare a meal for me ah therefore you go to the dishwasher take out any of the plates then you go to the sink and wash it ahm then you put the plate on the table and you go to the fridge you open the fridge and take out the instant meal from the fridge and you close the fridge again you go to the table and put the instant meal on the plate you just washed ah then you take the plate with the meal and go to the microwave open the microwave put in the meal close the microwave heat up the meal ahm take out the meal from the microwave and bring it to the table and eh yah put it there
 	<coref start="4" end="1"/>
 	<coref start="10" end="2"/>
 	
@@ -803,9 +773,7 @@ ah then you take the plate with the meal and go to the microwave open the microw
 	<coref start="124" end="71"/>
 	<coref start="129" end="121"/>
 </text>
-<text name="s7p05a">Hey Armar I'm hungry so eh please eh take the plates from the dishwasher and eh fill it with the instant meal from the fridge
-so go eh go to the fridge open the door take the instant meal and fill it to the plates and then eh do this into the microwave and microwave it five minutes 
-then bring it to me
+<text name="s7p05a">Hey Armar I am hungry so eh please eh take the plates from the dishwasher and eh fill it with the instant meal from the fridge so go eh go to the fridge open the door take the instant meal and fill it to the plates and then eh do this into the microwave and microwave it five minutes then bring it to me
 	<coref start="18" end="11"/>
 	<coref start="32" end="25"/>
 	<coref start="39" end="22"/>
@@ -816,9 +784,7 @@ then bring it to me
 	<coref start="61" end="56"/>
 	<coref start="63" end="2"/>
 </text>
-<text name="s7p05b">Hey Armar ah please take the plates eh from the dishwasher and clean it then fill it with the instant meal from the fridge 
-so go to the fridge open the door take the instant meal and fill it to into the plates then take the plates and eh bring it to the microwave microwave it five minutes 
-afterwards bring its bring it to me 
+<text name="s7p05b">Hey Armar ah please take the plates eh from the dishwasher and clean it then fill it with the instant meal from the fridge so go to the fridge open the door take the instant meal and fill it to into the plates then take the plates and eh bring it to the microwave microwave it five minutes afterwards bring its bring it to me 
 	<coref start="13" end="6"/>
 	<coref start="16" end="13"/>
 	<coref start="28" end="23"/>
@@ -830,20 +796,13 @@ afterwards bring its bring it to me
 	<coref start="55" end="50"/>
 	<coref start="62" end="55"/>
 </text>
-<text name="s7p06">Ok Armar please take a plate from the dishwasher wash it and fill it with instant food from the fridge 
-then warm it and put it on the table 
+<text name="s7p06">Ok Armar please take a plate from the dishwasher wash it and fill it with instant food from the fridge then warm it and put it on the table 
 	<coref start="10" end="5"/>
 	<coref start="13" end="10"/>
 	<coref start="22" end="16"/>
 	<coref start="25" end="22"/>
 </text>
-<text name="s7p07">Go to the dishwasher and take out any plate then go to the sink and wash the plate
-go to the fridge and open it 
-take an instant meal and put it on the plate 
-go to the microwave open it and put the plate inside
-activate the microwave 
-after it's done open it take out the plate and go to the table
-put the plate onto the table  
+<text name="s7p07">Go to the dishwasher and take out any plate then go to the sink and wash the plate go to the fridge and open it take an instant meal and put it on the plate go to the microwave open it and put the plate inside activate the microwave after it is done open it take out the plate and go to the table put the plate onto the table
 	<coref start="17" end="8"/>
 	<coref start="24" end="21"/>
 	<coref start="31" end="28"/>
@@ -857,11 +816,7 @@ put the plate onto the table
 	<coref start="66" end="58"/>
 	<coref start="69" end="63"/>
 </text>
-<text name="s7p08">Hey Armar I'm hungry please take eh a plate from the dishwasher and rinse it with water at the sink
-afterwards go to the fridge open the fridge and put the instant food you find into in there on to the plate
-close the fridge and warm the plate in the eh microwave
-therefore you have to open the door first 
-afterwards when it's warm please bring it eh to me at the table 
+<text name="s7p08">Hey Armar I am hungry please take eh a plate from the dishwasher and rinse it with water at the sink afterwards go to the fridge open the fridge and put the instant food you find into in there on to the plate close the fridge and warm the plate in the eh microwave therefore you have to open the door first afterwards when it is warm please bring it eh to me at the table 
 	<coref start="15" end="9"/>
 	<coref start="28" end="25"/>
 	<coref start="34" end="1"/>
@@ -873,8 +828,7 @@ afterwards when it's warm please bring it eh to me at the table
 	<coref start="69" end="64"/>
 	<coref start="72" end ="2"/>
 </text>
-<text name="s7p09">Hey Armar can you get a plate from dishwasher and wash it
-and after get the instant meal from the fridge and put it on the plate and heat it up in the microwave and put it on the table
+<text name="s7p09">Hey Armar can you get a plate from dishwasher and wash it and after get the instant meal from the fridge and put it on the plate and heat it up in the microwave and put it on the table
 	<coref start="3" end="1"/>
 	<coref start="11" end="6"/>
 	<coref start="23" end="17"/>
@@ -882,9 +836,7 @@ and after get the instant meal from the fridge and put it on the plate and heat 
 	<coref start="29" end="23"/>
 	<coref start="36" end="29"/>
 </text>
-<text name="s7p10">Go to the dishwasher and take one plate out wash this plate and then go to the fridge 
-put the em meal instant meal on the plate and bring it to the mac microwave 
-put it into the microwave then after it is warmed up put the ehm meal on the plate and bring the plate to the table 
+<text name="s7p10">Go to the dishwasher and take one plate out wash this plate and then go to the fridge put the em meal instant meal on the plate and bring it to the mac microwave put it into the microwave then after it is warmed up put the ehm meal on the plate and bring the plate to the table 
 	<coref start="11" end="7"/>
 	<coref start="26" end="11"/>
 	<coref start="29" end="26"/>
