@@ -84,10 +84,13 @@ public class FullContextInfoAnalyzer implements ICorefAnalyzer {
 		boolean isVerified = false;
 		List<ReferentRelation> rels = new ArrayList<>();
 		for (Relation r : entity.getRelationsOfType(ReferentRelation.class)) {
+
 			ReferentRelation refRel = (ReferentRelation) r;
-			rels.add(refRel);
-			if (refRel.isVerifiedByDialogAgent()) {
-				isVerified = true;
+			if (refRel.getStart().equals(entity)) {
+				rels.add(refRel);
+				if (refRel.isVerifiedByDialogAgent()) {
+					isVerified = true;
+				}
 			}
 		}
 		if (!isVerified) {
@@ -101,7 +104,7 @@ public class FullContextInfoAnalyzer implements ICorefAnalyzer {
 						if (alreadyExisting != null) {
 							if (!(Math.abs(alreadyExisting.getConfidence() - rel.getConfidence()) < 0.0000001d)) {
 								entity.removeRelation(alreadyExisting);
-								referent.getRelations().remove(alreadyExisting);
+								referent.removeRelation(alreadyExisting);
 								entity.addRelation(rel);
 								referent.addRelation(rel);
 							}
@@ -116,7 +119,8 @@ public class FullContextInfoAnalyzer implements ICorefAnalyzer {
 			}
 			if (matched.size() < rels.size()) {
 				for (ReferentRelation referentRelation : rels) {
-					if (!matched.contains(referentRelation)) {
+					// second part should be fixed by moving possessive pronoun relation generation in this class
+					if (!matched.contains(referentRelation) && !referentRelation.getName().equals("possessivePronounReferent")) {
 						referentRelation.getStart().removeRelation(referentRelation);
 						referentRelation.getEnd().removeRelation(referentRelation);
 					}
