@@ -55,86 +55,81 @@ public class FullContextInfoAnalyzer implements ICorefAnalyzer {
 	public void analyze(IGraph graph, Context context) throws MissingDataException {
 		if (anaphoraResToBePerformed) {
 			List<PronounEntity> pronouns = getPronounEntities(context);
+
 			for (PronounEntity pronounEntity : pronouns) {
 				List<ReferentCandidate> candidates = anaphoraRes.getCandidates(pronounEntity, graph, context);
-				for (ReferentCandidate referentCandidate : candidates) {
-					for (Entity entity : referentCandidate.getReferents()) {
-						if (referentCandidate.getConfidence() > 0.0) {
-
-							ReferentRelation rel = new ReferentRelation("anaphoraReferent", referentCandidate.getConfidence(),
-									pronounEntity, entity);
-							ReferentRelation alreadyExisting = getMatchingReferentRelation(rel);
-							if (alreadyExisting != null) {
-								if (!(Math.abs(alreadyExisting.getConfidence() - rel.getConfidence()) < 0.0000001d)) {
-									pronounEntity.getRelations().remove(alreadyExisting);
-									entity.getRelations().remove(alreadyExisting);
-									pronounEntity.addRelation(rel);
-									entity.addRelation(rel);
-								}
-							} else {
-								pronounEntity.addRelation(rel);
-								entity.addRelation(rel);
-							}
-
-						}
-					}
-				}
+				putIntoContext(pronounEntity, candidates, "anaphoraReferent");
 			}
 		}
 		if (subjectIdentityResToBePerformed) {
 			List<SubjectEntity> subjects = getSubjectEntities(context);
 			for (SubjectEntity subjectEntity : subjects) {
 				List<ReferentCandidate> candidates = subjectRes.getCandidates(subjectEntity, graph, context);
-				for (ReferentCandidate referentCandidate : candidates) {
-					for (Entity entity : referentCandidate.getReferents()) {
-						if (referentCandidate.getConfidence() > 0.0) {
-							ReferentRelation rel = new ReferentRelation("subjectIdentityReferent", referentCandidate.getConfidence(),
-									subjectEntity, entity);
-							ReferentRelation alreadyExisting = getMatchingReferentRelation(rel);
-							if (alreadyExisting != null) {
-								if (!(Math.abs(alreadyExisting.getConfidence() - rel.getConfidence()) < 0.0000001d)) {
-									subjectEntity.getRelations().remove(alreadyExisting);
-									entity.getRelations().remove(alreadyExisting);
-									subjectEntity.addRelation(rel);
-									entity.addRelation(rel);
-								}
-							} else {
-								subjectEntity.addRelation(rel);
-								entity.addRelation(rel);
-							}
-						}
-					}
-				}
+				putIntoContext(subjectEntity, candidates, "subjectIdentityReferent");
 			}
 		}
 		if (objectIdentityResToBePerformed) {
 			List<ObjectEntity> objects = getObjectEntities(context);
 			for (ObjectEntity objectEntity : objects) {
 				List<ReferentCandidate> candidates = objectRes.getCandidates(objectEntity, graph, context);
-				for (ReferentCandidate referentCandidate : candidates) {
-					for (Entity entity : referentCandidate.getReferents()) {
-						if (referentCandidate.getConfidence() > 0.0) {
-							ReferentRelation rel = new ReferentRelation("objectIdentityReferent", referentCandidate.getConfidence(),
-									objectEntity, entity);
-							ReferentRelation alreadyExisting = getMatchingReferentRelation(rel);
-							if (alreadyExisting != null) {
-								if (!(Math.abs(alreadyExisting.getConfidence() - rel.getConfidence()) < 0.0000001d)) {
-									objectEntity.getRelations().remove(alreadyExisting);
-									entity.getRelations().remove(alreadyExisting);
-									objectEntity.addRelation(rel);
-									entity.addRelation(rel);
-								}
-							} else {
-								objectEntity.addRelation(rel);
+				putIntoContext(objectEntity, candidates, "objectIdentityReferent");
+			}
+		}
+
+		context.printToGraph(graph);
+
+	}
+
+	private void putIntoContext(Entity entity, List<ReferentCandidate> candidates, String relName) {
+		boolean isVerified = false;
+		List<ReferentRelation> rels = new ArrayList<>();
+		for (Relation r : entity.getRelationsOfType(ReferentRelation.class)) {
+			ReferentRelation refRel = (ReferentRelation) r;
+			rels.add(refRel);
+			if (refRel.isVerifiedByDialogAgent()) {
+				isVerified = true;
+			}
+		}
+		if (!isVerified) {
+			List<ReferentRelation> matched = new ArrayList<>();
+			for (ReferentCandidate referentCandidate : candidates) {
+				for (Entity referent : referentCandidate.getReferents()) {
+					if (referentCandidate.getConfidence() > 0.0) {
+
+						ReferentRelation rel = new ReferentRelation(relName, referentCandidate.getConfidence(), entity, referent);
+						ReferentRelation alreadyExisting = getMatchingReferentRelation(rel);
+						if (alreadyExisting != null) {
+							if (!(Math.abs(alreadyExisting.getConfidence() - rel.getConfidence()) < 0.0000001d)) {
+								entity.removeRelation(alreadyExisting);
+								referent.getRelations().remove(alreadyExisting);
 								entity.addRelation(rel);
+								referent.addRelation(rel);
 							}
+							matched.add(alreadyExisting);
+						} else {
+							entity.addRelation(rel);
+							referent.addRelation(rel);
 						}
+
 					}
 				}
 			}
+			if (matched.size() < rels.size()) {
+				for (ReferentRelation referentRelation : rels) {
+					if (!matched.contains(referentRelation)) {
+						referentRelation.getStart().removeRelation(referentRelation);
+						referentRelation.getEnd().removeRelation(referentRelation);
+					}
+				}
+			}
+		} else {
+			for (ReferentRelation referentRelation : rels) {
+				if (!referentRelation.isVerifiedByDialogAgent()) {
+					referentRelation.getStart().removeRelation(referentRelation);
+					referentRelation.getEnd().removeRelation(referentRelation);
+				}
+			}
 		}
-		context.printToGraph(graph);
-
 	}
 
 	private ReferentRelation getMatchingReferentRelation(ReferentRelation current) {
