@@ -69,7 +69,7 @@ public class CorefAnalyzer extends AbstractAgent {
 				e.printStackTrace();
 			}
 		} else {
-			logger.debug("No Context existing using BasicEntityRecocnizer");
+			logger.debug("No Context existing using BasicEntityRecognizer");
 			try {
 				basicEntityRecog.analyze(graph, context);
 				analyzer = new FullContextInfoAnalyzer(props);
@@ -78,7 +78,7 @@ public class CorefAnalyzer extends AbstractAgent {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 
 	}

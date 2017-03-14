@@ -48,6 +48,7 @@ public class ConceptMatchSieve extends Sieve {
 								|| candidateConcept.getEqualConcepts().contains(currentConcept))) {
 							if (!(currentConcept.getSynonyms().contains(candidateConcept.getName())
 									|| candidateConcept.getSynonyms().contains(currentConcept.getName()))) {
+								//TODO resolve whole hierarchy
 								if (!currentConcept.getSubConcepts().contains(candidateConcept)) {
 									result.remove(entity);
 								}
