@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>edu.kit.ipd.parse</groupId>
 	<artifactId>CorefAnalyzer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<repositories>
 		<repository>
 			<id>ipdNexus</id>
@@ -39,7 +39,6 @@
 		<dependency>
 			<groupId>edu.kit.ipd.parse</groupId>
 			<artifactId>ContextAnalyzer</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.stanford.nlp</groupId>
@@ -53,7 +52,6 @@
 		<dependency>
 			<groupId>edu.kit.ipd.parse</groupId>
 			<artifactId>condition_detection</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -62,11 +60,6 @@
     <version>RELEASE</version>
 		</dependency>
 
-		<dependency>
-			<groupId>edu.kit.ipd.parse</groupId>
-			<artifactId>tokenizing</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 		<dependency>
 			<groupId>edu.kit.ipd.parse</groupId>
 			<artifactId>SRLabeler</artifactId>

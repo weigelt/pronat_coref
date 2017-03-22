@@ -190,7 +190,7 @@ public class ActionPossibleSieve extends Sieve {
 
 	private List<ActionEntityRelation> getActionRelations(Entity entity) {
 		List<ActionEntityRelation> result = new ArrayList<>();
-		Set<Relation> relations = entity.getRelations();
+		List<Relation> relations = entity.getRelations();
 		for (Relation relation : relations) {
 			if (relation instanceof ActionEntityRelation) {
 				result.add((ActionEntityRelation) relation);
