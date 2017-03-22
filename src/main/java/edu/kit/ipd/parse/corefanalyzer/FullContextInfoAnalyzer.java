@@ -88,7 +88,7 @@ public class FullContextInfoAnalyzer implements ICorefAnalyzer {
 			ReferentRelation refRel = (ReferentRelation) r;
 			if (refRel.getStart().equals(entity)) {
 				rels.add(refRel);
-				if (refRel.isVerifiedByDialogAgent()) {
+				if (refRel.confidenceIsVerified()) {
 					isVerified = true;
 				}
 			}
@@ -128,7 +128,7 @@ public class FullContextInfoAnalyzer implements ICorefAnalyzer {
 			}
 		} else {
 			for (ReferentRelation referentRelation : rels) {
-				if (!referentRelation.isVerifiedByDialogAgent()) {
+				if (!referentRelation.confidenceIsVerified()) {
 					referentRelation.getStart().removeRelation(referentRelation);
 					referentRelation.getEnd().removeRelation(referentRelation);
 				}

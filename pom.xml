@@ -18,17 +18,6 @@
 	</repositories>
 	<dependencies>
 		<dependency>
-			<groupId>edu.kit.ipd.parse</groupId>
-			<artifactId>luna</artifactId>
-			<classifier>javadoc</classifier>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>edu.kit.ipd.parse</groupId>
-			<artifactId>luna</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
@@ -97,6 +86,10 @@
 			<groupId>edu.kit.ipd.parse</groupId>
 			<artifactId>ShallowNLP</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>edu.kit.ipd.parse</groupId>
+			<artifactId>luna</artifactId>
 		</dependency>
 	</dependencies>
 </project>
