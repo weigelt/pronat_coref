@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>edu.kit.ipd.parse</groupId>
-	<artifactId>CorefAnalyzer</artifactId>
+	<artifactId>coref</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<repositories>
 		<repository>
@@ -35,10 +35,6 @@
 			<groupId>org.kohsuke.metainf-services</groupId>
 			<artifactId>metainf-services</artifactId>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>edu.kit.ipd.parse</groupId>
-			<artifactId>ContextAnalyzer</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>edu.stanford.nlp</groupId>
@@ -83,6 +79,10 @@
 		<dependency>
 			<groupId>edu.kit.ipd.parse</groupId>
 			<artifactId>luna</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>edu.kit.ipd.parse</groupId>
+			<artifactId>context</artifactId>
 		</dependency>
 	</dependencies>
 </project>
