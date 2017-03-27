@@ -344,7 +344,7 @@
 	<coref start="2" end="0"/>
 	<coref start="16" end="12"/>
 </text>
-<text name="if.4.19">look at the table take an object if it is dirty put it in the dishwasher and if it is dirty put it in the cupboard
+<text name="if.4.19">look at the table take an object if it is dirty put it in the dishwasher and if it is clean put it in the cupboard
 	<coref start="8" end="5"/>
 	<coref start="12" end="8"/>
 	<coref start="18" end="12"/>
@@ -365,7 +365,7 @@
 <text name="if.5.4">go to the fridge and bring me some fresh oranges otherwise get me some orange juice and the vodka please
 	<coref start="12" end="6"/>
 </text>
-<text name="if.5.5">hello armar I want to make some drinks go to the fridge and if there fresh oranges bring me the fresh oranges together with vodka otherwise bring me just orange juice and the vodka
+<text name="if.5.5">hello armar I want to make some drinks go to the fridge and if there are fresh oranges bring me the fresh oranges together with vodka otherwise bring me just orange juice and the vodka
 	<coref start="18" end="2"/>
 	<coref start="21" end="16"/>
 	<coref start="33" end="24"/>
