@@ -1132,7 +1132,7 @@ public class CorpusEvaluation {
 
 	}
 
-	@Ignore
+	//@Ignore
 	@Test
 	public void iffiveOne() {
 		ppd = new PrePipelineData();
@@ -1320,7 +1320,7 @@ public class CorpusEvaluation {
 	@Test
 	public void iffiveNine() {
 		ppd = new PrePipelineData();
-		Text text = texts.get("s6p02");
+		Text text = texts.get("if.5.9");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
 		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
@@ -1481,8 +1481,8 @@ public class CorpusEvaluation {
 
 		double fp = tooMuch + wrong;
 		double fn = overall - tp;
-		double precision = (double) tp / (double) (tp + fp);
-		double recall = (double) tp / (double) (tp + fn);
+		double precision = tp / (tp + fp);
+		double recall = tp / (tp + fn);
 		double f1 = (2 * precision * recall) / (precision + recall);
 		System.out.println("----------------------------------------------------");
 		System.out.println("| Correct Relations: " + tp + "/" + overall + " | Additionally Detected: " + tooMuch + "|");
@@ -1502,54 +1502,54 @@ public class CorpusEvaluation {
 		int wrong = 0;
 		List<String> failures = new ArrayList<>();
 		for (String id : texts.keySet()) {
-			if (!id.startsWith("s")) {
+			//if (id.startsWith("s")) {
 
-				ppd = new PrePipelineData();
-				Text text = texts.get(id);
-				String input = text.getText();
-				List<int[]> expected = text.getRefs();
-				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
-				System.out.println(id);
-				executePrepipeline(ppd);
+			ppd = new PrePipelineData();
+			Text text = texts.get(id);
+			String input = text.getText();
+			List<int[]> expected = text.getRefs();
+			ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+			System.out.println(id);
+			executePrepipeline(ppd);
 
-				try {
-					Context prev = new Context();
-					Context cResult = new Context();
-					IGraph graph = ppd.getGraph();
-					cond.setGraph(graph);
-					cond.exec();
-					graph = cond.getGraph();
-					do {
-						prev = cResult;
-						contextAnalyzer.setGraph(graph);
-						contextAnalyzer.exec();
-						coref.setGraph(contextAnalyzer.getGraph());
-						coref.exec();
-						cResult = coref.getContext();
-						graph = coref.getGraph();
-						System.out.println(input);
-						CorefTestHelper.printOutRelations(cResult);
+			try {
+				Context prev = new Context();
+				Context cResult = new Context();
+				IGraph graph = ppd.getGraph();
+				cond.setGraph(graph);
+				cond.exec();
+				graph = cond.getGraph();
+				do {
+					prev = cResult;
+					contextAnalyzer.setGraph(graph);
+					contextAnalyzer.exec();
+					coref.setGraph(contextAnalyzer.getGraph());
+					coref.exec();
+					cResult = coref.getContext();
+					graph = coref.getGraph();
+					System.out.println(input);
+					CorefTestHelper.printOutRelations(cResult);
 
-					} while (!prev.equals(cResult));
-					TestResult result = CorefTestHelper.checkCorefChains(cResult, expected);
-					tp += result.result[0];
-					overall += expected.size();
-					tooMuch += result.result[1];
-					wrong += result.result[2];
-					for (String failure : result.failMessages) {
-						failures.add(id + ": " + failure);
-					}
-				} catch (MissingDataException e) {
-					e.printStackTrace();
+				} while (!prev.equals(cResult));
+				TestResult result = CorefTestHelper.checkCorefChains(cResult, expected);
+				tp += result.result[0];
+				overall += expected.size();
+				tooMuch += result.result[1];
+				wrong += result.result[2];
+				for (String failure : result.failMessages) {
+					failures.add(id + ": " + failure);
 				}
-
+			} catch (MissingDataException e) {
+				e.printStackTrace();
 			}
+
+			//}
 		}
 
 		double fp = tooMuch + wrong;
 		double fn = overall - tp;
-		double precision = (double) tp / (double) (tp + fp);
-		double recall = (double) tp / (double) (tp + fn);
+		double precision = tp / (tp + fp);
+		double recall = tp / (tp + fn);
 		double f1 = (2 * precision * recall) / (precision + recall);
 		System.out.println("----------------------------------------------------");
 		System.out.println("| Correct Relations: " + tp + "/" + overall + " | Additionally Detected: " + tooMuch + "|");
@@ -1617,8 +1617,8 @@ public class CorpusEvaluation {
 
 		double fp = tooMuch + wrong;
 		double fn = overall - tp;
-		double precision = (double) tp / (double) (tp + fp);
-		double recall = (double) tp / (double) (tp + fn);
+		double precision = tp / (tp + fp);
+		double recall = tp / (tp + fn);
 		double f1 = (2 * precision * recall) / (precision + recall);
 		System.out.println("----------------------------------------------------");
 		System.out.println("| Correct Relations: " + tp + "/" + overall + " | Additionally Detected: " + tooMuch + "|");
@@ -1685,8 +1685,8 @@ public class CorpusEvaluation {
 
 		double fp = tooMuch + wrong;
 		double fn = overall - tp;
-		double precision = (double) tp / (double) (tp + fp);
-		double recall = (double) tp / (double) (tp + fn);
+		double precision = tp / (tp + fp);
+		double recall = tp / (tp + fn);
 		double f1 = (2 * precision * recall) / (precision + recall);
 		System.out.println("----------------------------------------------------");
 		System.out.println("| Correct Relations: " + tp + "/" + overall + " | Additionally Detected: " + tooMuch + "|");

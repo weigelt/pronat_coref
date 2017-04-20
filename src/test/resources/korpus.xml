@@ -271,7 +271,7 @@
 </text>
 <text name="if.4.4">ok hey armar if the dishes are dirty please put them into the dishwasher otherwise put them into the cupboard
 	<coref start="10" end="5"/>
-	<coref start="16" end="10"/>
+	<coref start="16" end="5"/>
 </text>
 <text name="if.4.5">hello armar look at the table there are dishes if they are dirty put them into the dishwasher and if they are clean put them into the cupboard
 	<coref start="10" end="8"/>
@@ -352,7 +352,7 @@
 <text name="if.5.1">hey armar could you please open the fridge if there are fresh oranges bring them with the vodka else bring the orange juice and the vodka
 	<coref start="3" end="1"/>
 	<coref start="14" end="12"/>
-	<coref start="25" end="17"/>
+	<!-- <coref start="25" end="17"/>-->
 </text>
 <text name="if.5.2">armar please have a look into the fridge if there are fresh oranges bring them alongside with the vodka else please bring orange juice
 	<coref start="14" end="12"/>
@@ -366,10 +366,10 @@
 	<coref start="12" end="6"/>
 </text>
 <text name="if.5.5">hello armar I want to make some drinks go to the fridge and if there are fresh oranges bring me the fresh oranges together with vodka otherwise bring me just orange juice and the vodka
-	<coref start="18" end="2"/>
-	<coref start="21" end="16"/>
-	<coref start="33" end="24"/>
-	<coref start="27" end="18"/>
+	<coref start="19" end="2"/>
+	<coref start="22" end="16"/>
+	<coref start="33" end="25"/>
+	<coref start="28" end="2"/>
 </text>
 <text name="if.5.6">armar please get me some vodka from the fridge and if there are fresh oranges please bring them otherwise you have to give me the orange juice
 	<coref start="17" end="14"/>
@@ -382,8 +382,8 @@
 	<coref start="27" end="10"/>
 	<coref start="28" end="20"/>
 	<coref start="31" end="15"/>
-	<coref start="33" end="25"/>
-	<coref start="35" end="27"/>
+	<coref start="33" end="8"/>
+	<coref start="35" end="10"/>
 	<coref start="39" end="13"/>
 	<coref start="42" end="31"/>
 </text>
@@ -396,7 +396,7 @@
 	<coref start="18" end="10"/>
 	<coref start="20" end="15"/>
 	<coref start="22" end="3"/>
-	<coref start="26" end="22"/>
+	<coref start="26" end="3"/>
 </text>
 <text name="if.5.10">robo go to the fridge open it look for the vodka and take it grab the fresh oranges if there are any otherwise grab the orange juice
 	<coref start="6" end="4"/>
@@ -420,7 +420,7 @@
 <text name="if.5.14">hi armar please go to the fridge and look if there are any fresh oranges if there are any bring them with you and the vodka otherwise bring orange juice and the vodka
 	<coref start="20" end="14"/>
 	<coref start="22" end="1"/>
-	<coref start="32" end="25"/>
+	<!-- <coref start="32" end="25"/>-->
 </text>
 <text name="if.5.15">hi robo please look in the fridge if there are fresh oranges please give it to me if there are none please bring me the orange juice
 	<coref start="14" end="11"/>
@@ -434,13 +434,13 @@
 <text name="if.5.17">armar please go to the fridge and bring me vodka and if there are fresh oranges bring me these if not bring me orange juice
 	<coref start="17" end="8"/>
 	<coref start="18" end="15"/>
-	<coref start="22" end="17"/>
+	<coref start="22" end="8"/>
 </text>
 <text name="if.5.18">armar could you go to the fridge and if there are fresh oranges bring them and vodka to the table and if not bring orange juice and vodka to the table
 	<coref start="2" end="0"/>
 	<coref start="14" end="12"/>
-	<coref start="27" end="16"/>
-	<coref start="29" end="18"/>
+	<!--<coref start="27" end="16"/>
+	<coref start="29" end="18"/>-->
 </text>
 <text name="if.5.19">go to the fridge open the fridge if there are fresh oranges take the oranges and the vodka if there are no fresh oranges take the orange juice and the vodka close the fridge and take them to the table
 	<coref start="6" end="3"/>
