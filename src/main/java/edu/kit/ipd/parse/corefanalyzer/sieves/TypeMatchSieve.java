@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package edu.kit.ipd.parse.corefanalyzer.sieves;
 
@@ -14,6 +14,7 @@ import edu.kit.ipd.parse.corefanalyzer.data.ReferentCandidate;
 import edu.kit.ipd.parse.corefanalyzer.resolution.PronounType;
 import edu.kit.ipd.parse.corefanalyzer.resolution.SpeakerAnaphora;
 import edu.kit.ipd.parse.corefanalyzer.resolution.SubjectAnaphora;
+import edu.kit.ipd.parse.corefanalyzer.util.MatchingUtils;
 
 /**
  * @author Tobias Hey
@@ -53,30 +54,43 @@ public class TypeMatchSieve extends Sieve {
 						if (candType.equals(PronounType.SPEAKER)) {
 							if (SpeakerAnaphora.firstPersonPronounsSingular.contains(entity.getName().toLowerCase())
 									&& SpeakerAnaphora.firstPersonPronounsSingular.contains(current.getName().toLowerCase())) {
-								pronounMatchFound = true;
+								if (!MatchingUtils.isInAlternativeStatementBlock(current, entity)) {
+									pronounMatchFound = true;
+								}
 
 							} else if (SpeakerAnaphora.firstPersonPronounsPlural.contains(entity.getName().toLowerCase())
 									&& SpeakerAnaphora.firstPersonPronounsPlural.contains(current.getName().toLowerCase())) {
-								pronounMatchFound = true;
+								if (!MatchingUtils.isInAlternativeStatementBlock(current, entity)) {
+									pronounMatchFound = true;
+								}
 							} else {
 								result.remove(entity);
 							}
 						} else if (candType.equals(PronounType.SUBJECT)) {
 							if (SubjectAnaphora.secondPersonPronouns.contains(entity.getName().toLowerCase())
 									&& SubjectAnaphora.secondPersonPronouns.contains(current.getName().toLowerCase())) {
-								pronounMatchFound = true;
+								if (!MatchingUtils.isInAlternativeStatementBlock(current, entity)) {
+									pronounMatchFound = true;
+								}
 
 							} else if (SubjectAnaphora.femalePronouns.contains(entity.getName().toLowerCase())
 									&& SubjectAnaphora.femalePronouns.contains(current.getName().toLowerCase())) {
-								pronounMatchFound = true;
+								if (!MatchingUtils.isInAlternativeStatementBlock(current, entity)) {
+									pronounMatchFound = true;
+								}
 							} else if (SubjectAnaphora.malePronouns.contains(entity.getName().toLowerCase())
 									&& SubjectAnaphora.malePronouns.contains(current.getName().toLowerCase())) {
-								pronounMatchFound = true;
+								if (!MatchingUtils.isInAlternativeStatementBlock(current, entity)) {
+									pronounMatchFound = true;
+								}
 							} else {
 								result.remove(entity);
 							}
 						} else {
-							pronounMatchFound = true;
+							if (!MatchingUtils.isInAlternativeStatementBlock(current, entity)) {
+								pronounMatchFound = true;
+							}
+
 						}
 					}
 				} else {
