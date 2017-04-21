@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package edu.kit.ipd.parse.corefanalyzer.util;
 
@@ -99,15 +99,18 @@ public final class CorefTestHelper {
 			if (start.hasRelationsOfType(ReferentRelation.class)) {
 				List<Relation> refRels = start.getRelationsOfType(ReferentRelation.class);
 				List<ReferentRelation> referents = getMostLikelyRelation(refRels, start);
+				refRels.removeAll(referents);
 				boolean failed = true;
 				for (ReferentRelation rel : referents) {
 					if (rel.getStart().equals(start) && rel.getEnd().equals(end)) {
 						failed = false;
+						refRels.add(rel);
 					}
 				}
 				if (failed) {
 					failMessages.add("Most likely Relations does not match expected: " + Arrays.deepToString(referents.toArray()) + " = "
 							+ Arrays.toString(relation));
+					refRels.add(referents.get(0));
 					rels.addAll(refRels);
 					wrong++;
 					continue;
