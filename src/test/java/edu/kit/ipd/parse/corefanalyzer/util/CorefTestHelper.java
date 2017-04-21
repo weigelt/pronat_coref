@@ -110,7 +110,9 @@ public final class CorefTestHelper {
 				if (failed) {
 					failMessages.add("Most likely Relations does not match expected: " + Arrays.deepToString(referents.toArray()) + " = "
 							+ Arrays.toString(relation));
-					refRels.add(referents.get(0));
+					if (!referents.isEmpty()) {
+						refRels.add(referents.get(0));
+					}
 					rels.addAll(refRels);
 					wrong++;
 					continue;
