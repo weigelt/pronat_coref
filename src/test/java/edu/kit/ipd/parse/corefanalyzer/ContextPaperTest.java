@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Properties;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.kit.ipd.parse.contextanalyzer.ContextAnalyzer;
@@ -124,7 +123,6 @@ public class ContextPaperTest {
 
 	}
 
-	@Ignore("check for open state not implemented yet")
 	@Test
 	public void example4() {
 
