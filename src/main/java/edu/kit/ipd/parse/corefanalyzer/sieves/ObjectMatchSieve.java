@@ -8,13 +8,16 @@ import java.util.List;
 
 import edu.kit.ipd.parse.contextanalyzer.data.AbstractConcept;
 import edu.kit.ipd.parse.contextanalyzer.data.EntityConcept;
+import edu.kit.ipd.parse.contextanalyzer.data.State;
 import edu.kit.ipd.parse.contextanalyzer.data.entities.Entity;
+import edu.kit.ipd.parse.contextanalyzer.data.entities.IStateOwner;
 import edu.kit.ipd.parse.contextanalyzer.data.entities.ObjectEntity;
 import edu.kit.ipd.parse.contextanalyzer.data.relations.ReferentRelation;
 import edu.kit.ipd.parse.contextanalyzer.util.ContextUtils;
 import edu.kit.ipd.parse.corefanalyzer.data.ReferentCandidate;
 import edu.kit.ipd.parse.corefanalyzer.util.MatchingUtils;
 import edu.kit.ipd.parse.luna.graph.INode;
+import info.debatty.java.stringsimilarity.JaroWinkler;
 
 /**
  * @author Tobias Hey
@@ -23,13 +26,18 @@ import edu.kit.ipd.parse.luna.graph.INode;
 public class ObjectMatchSieve extends Sieve {
 
 	private static final double WEIGHT = 0.0;
+	private static final double JW_SIMILARITY_THRESHOLD = 0.92;
+
+	private JaroWinkler jaroWinkler;
 
 	public ObjectMatchSieve() {
 		super(Modus.HARD);
+		jaroWinkler = new JaroWinkler();
 	}
 
 	public ObjectMatchSieve(Modus modus) {
 		super(modus);
+		jaroWinkler = new JaroWinkler();
 	}
 
 	static final String ID = "objectMatch";
@@ -83,11 +91,22 @@ public class ObjectMatchSieve extends Sieve {
 							EntityConcept candidateConcept = ContextUtils
 									.getMostLikelyEntityConcept(referentCandidate.getCandidate().getAssociatedConcepts());
 							if (isSubsumed(currentConcept, candidateConcept)) {
-								if (cand == null) {
-									cand = new ReferentCandidate(referentCandidate.getCandidate(), 1.0);
+								if (matchingStatesExistInCandidates(current, candidates)) {
+									if (matchesAllStates(current, referentCandidate.getCandidate())) {
+										if (cand == null) {
+											cand = new ReferentCandidate(referentCandidate.getCandidate(), 1.0);
+										} else {
+											cand.addReferent(referentCandidate.getCandidate());
+										}
+									}
 								} else {
-									cand.addReferent(referentCandidate.getCandidate());
+									if (cand == null) {
+										cand = new ReferentCandidate(referentCandidate.getCandidate(), 1.0);
+									} else {
+										cand.addReferent(referentCandidate.getCandidate());
+									}
 								}
+
 							}
 						}
 
@@ -113,6 +132,57 @@ public class ObjectMatchSieve extends Sieve {
 			}
 		}
 		return result;
+	}
+
+	private boolean matchesAllStates(Entity current, Entity candidate) {
+		boolean result = false;
+		if (current instanceof ObjectEntity) {
+			ObjectEntity obj = (ObjectEntity) current;
+			result = true;
+			for (String adjective : obj.getDescribingAdjectives()) {
+				boolean match = false;
+				if (candidate instanceof IStateOwner) {
+					IStateOwner stateOwner = (IStateOwner) candidate;
+
+					for (State state : stateOwner.getStates()) {
+
+						if (jaroWinkler.similarity(adjective.toLowerCase(),
+								state.getName().trim().replaceAll(" ", "").toLowerCase()) > JW_SIMILARITY_THRESHOLD) {
+							match = true;
+						}
+					}
+
+				}
+				if (!match) {
+					result = false;
+				}
+			}
+		}
+		return result;
+	}
+
+	private boolean matchingStatesExistInCandidates(Entity current, List<ReferentCandidate> candidates) {
+		if (current instanceof ObjectEntity) {
+			ObjectEntity obj = (ObjectEntity) current;
+			for (String adjective : obj.getDescribingAdjectives()) {
+				for (ReferentCandidate referentCandidate : candidates) {
+					Entity candidate = referentCandidate.getCandidate();
+					if (candidate instanceof IStateOwner) {
+						IStateOwner stateOwner = (IStateOwner) candidate;
+						for (State state : stateOwner.getStates()) {
+							if (jaroWinkler.similarity(adjective.toLowerCase(),
+									state.getName().trim().replaceAll(" ", "").toLowerCase()) > JW_SIMILARITY_THRESHOLD) {
+								return true;
+
+							}
+						}
+
+					}
+
+				}
+			}
+		}
+		return false;
 	}
 
 	private boolean hasDirectCandidate(Entity current, List<ReferentCandidate> result) {
