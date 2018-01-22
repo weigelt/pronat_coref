@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -46,20 +46,20 @@ import edu.kit.ipd.parse.srlabeler.SRLabeler;
 
 public class CorpusEvaluation {
 
-	ShallowNLP snlp;
-	SRLabeler srLabeler;
-	NERTagger nerTagger;
-	ContextAnalyzer contextAnalyzer;
-	CorefAnalyzer coref;
-	ConditionDetector cond;
-	GraphBuilder graphBuilder;
-	PrePipelineData ppd;
-	HashMap<String, Text> texts;
+	private static ShallowNLP snlp;
+	private static SRLabeler srLabeler;
+	private static NERTagger nerTagger;
+	private static ContextAnalyzer contextAnalyzer;
+	private static CorefAnalyzer coref;
+	private static ConditionDetector cond;
+	private static GraphBuilder graphBuilder;
+	private PrePipelineData ppd;
+	private static HashMap<String, Text> texts;
 	private static final Logger logger = LoggerFactory.getLogger(CorpusEvaluation.class);
 	private static Properties props;
 
-	@Before
-	public void setUp() {
+	@BeforeClass
+	public static void setUp() {
 		props = ConfigManager.getConfiguration(Domain.class);
 		props.setProperty("ONTOLOGY_PATH", "/ontology.owl");
 		props.setProperty("SYSTEM", "System");
