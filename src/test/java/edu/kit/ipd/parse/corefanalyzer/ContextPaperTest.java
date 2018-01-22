@@ -1,3 +1,6 @@
+/**
+ *
+ */
 package edu.kit.ipd.parse.corefanalyzer;
 
 import java.util.ArrayList;
@@ -5,7 +8,6 @@ import java.util.List;
 import java.util.Properties;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.kit.ipd.parse.contextanalyzer.ContextAnalyzer;
@@ -14,6 +16,7 @@ import edu.kit.ipd.parse.corefanalyzer.util.CorefTestHelper;
 import edu.kit.ipd.parse.graphBuilder.GraphBuilder;
 import edu.kit.ipd.parse.luna.data.MissingDataException;
 import edu.kit.ipd.parse.luna.data.PrePipelineData;
+import edu.kit.ipd.parse.luna.graph.IGraph;
 import edu.kit.ipd.parse.luna.pipeline.PipelineStageException;
 import edu.kit.ipd.parse.luna.tools.ConfigManager;
 import edu.kit.ipd.parse.luna.tools.StringToHypothesis;
@@ -22,7 +25,11 @@ import edu.kit.ipd.parse.ontology_connection.Domain;
 import edu.kit.ipd.parse.shallownlp.ShallowNLP;
 import edu.kit.ipd.parse.srlabeler.SRLabeler;
 
-public class SubjectIdentityTest {
+/**
+ * @author Tobias Hey
+ *
+ */
+public class ContextPaperTest {
 
 	private static ShallowNLP snlp;
 	private static SRLabeler srLabeler;
@@ -72,58 +79,86 @@ public class SubjectIdentityTest {
 	}
 
 	@Test
-	public void subjectIdentity() {
-		ppd = new PrePipelineData();
-		String input = "Armar go to the fridge next to Mary and John then go to Mary and afterwards Armar could you open it";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
-		executeSNLPandSRLandNER(ppd);
-		try {
-			contextAnalyzer.setGraph(ppd.getGraph());
-			contextAnalyzer.exec();
-			coref.setGraph(contextAnalyzer.getGraph());
-			coref.exec();
-			Context context = coref.getContext();
-			System.out.println(input);
-			CorefTestHelper.printOutRelations(context);
-			List<int[]> expected = new ArrayList<>();
-			expected.add(new int[] { 13, 7 });
-			expected.add(new int[] { 16, 0 });
-			expected.add(new int[] { 18, 16 });
-			expected.add(new int[] { 20, 4 });
-			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
-		} catch (MissingDataException e) {
+	public void example1() {
+		String input = "Open the cupboard Take the cup and close it";
+		List<int[]> expected = new ArrayList<>();
+		expected.add(new int[] { 8, 2 });
 
-			e.printStackTrace();
-		}
+		Context result = execute(input);
+
+		CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(result, expected), expected);
 
 	}
 
-	//TODO resolve smith entity
-	@Ignore
 	@Test
-	public void diffIdentity() {
+	public void example2() {
+
+		String input = "There is a tumbler on the table Take the glass and bring it to me";
+		List<int[]> expected = new ArrayList<>();
+		expected.add(new int[] { 9, 3 });
+		expected.add(new int[] { 12, 9 });
+
+		Context result = execute(input);
+
+		CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(result, expected), expected);
+
+	}
+
+	@Test
+	public void example3() {
+
+		String input = "To prepare meringue take egg white and powdered sugar and lemon extract Put all the ingredients into the bowl";
+		List<int[]> expected = new ArrayList<>();
+		expected.add(new int[] { 15, 5 });
+		expected.add(new int[] { 15, 8 });
+		expected.add(new int[] { 15, 11 });
+
+		Context result = execute(input);
+
+		CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(result, expected), expected);
+
+	}
+
+	@Test
+	public void example4() {
+
+		String input = "Close the fridge open the dishwasher Then close all open appliances";
+		List<int[]> expected = new ArrayList<>();
+		expected.add(new int[] { 10, 5 });
+
+		Context result = execute(input);
+
+		CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(result, expected), expected);
+
+	}
+
+	private Context execute(String input) {
 		ppd = new PrePipelineData();
-		String input = "Mary stands next to Mr. Smith tell her she should go to John Smith ";
+
 		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
 		executeSNLPandSRLandNER(ppd);
 		try {
-			contextAnalyzer.setGraph(ppd.getGraph());
-			contextAnalyzer.exec();
-			coref.setGraph(contextAnalyzer.getGraph());
-			coref.exec();
-			Context context = coref.getContext();
-			System.out.println(input);
-			CorefTestHelper.printOutRelations(context);
-			List<int[]> expected = new ArrayList<>();
-			expected.add(new int[] { 12, 7 });
-			expected.add(new int[] { 7, 0 });
-			expected.add(new int[] { 8, 7 });
-			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
-		} catch (MissingDataException e) {
+			Context prev = new Context();
+			Context result = new Context();
+			IGraph graph = ppd.getGraph();
 
+			do {
+				prev = result;
+				contextAnalyzer.setGraph(graph);
+				contextAnalyzer.exec();
+				coref.setGraph(contextAnalyzer.getGraph());
+				coref.exec();
+				result = coref.getContext();
+				graph = coref.getGraph();
+				System.out.println(input);
+				CorefTestHelper.printOutRelations(result);
+
+			} while (!prev.equals(result));
+			return result;
+		} catch (MissingDataException e) {
 			e.printStackTrace();
 		}
-
+		return null;
 	}
 
 	private void executeSNLPandSRLandNER(PrePipelineData ppd) {
@@ -139,5 +174,4 @@ public class SubjectIdentityTest {
 		}
 
 	}
-
 }

@@ -1,11 +1,12 @@
 /**
- * 
+ *
  */
 package edu.kit.ipd.parse.corefanalyzer.sieves;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.kit.ipd.parse.contextanalyzer.data.AbstractConcept;
 import edu.kit.ipd.parse.contextanalyzer.data.EntityConcept;
 import edu.kit.ipd.parse.contextanalyzer.data.entities.Entity;
 import edu.kit.ipd.parse.contextanalyzer.data.entities.SubjectEntity;
@@ -48,8 +49,8 @@ public class ConceptMatchSieve extends Sieve {
 								|| candidateConcept.getEqualConcepts().contains(currentConcept))) {
 							if (!(currentConcept.getSynonyms().contains(candidateConcept.getName())
 									|| candidateConcept.getSynonyms().contains(currentConcept.getName()))) {
-								//TODO resolve whole hierarchy
-								if (!currentConcept.getSubConcepts().contains(candidateConcept)) {
+
+								if (!isSubsumed(currentConcept, candidateConcept)) {
 									result.remove(entity);
 								}
 							}
@@ -72,6 +73,24 @@ public class ConceptMatchSieve extends Sieve {
 					result.remove(candidate);
 				} else {
 					result.get(result.indexOf(candidate)).setConfidence(candidate.getConfidence() * WEIGHT);
+				}
+			}
+		}
+		return result;
+	}
+
+	private boolean isSubsumed(EntityConcept current, EntityConcept candidate) {
+		if (current.getSubConcepts().isEmpty()) {
+			return false;
+		}
+		boolean result = false;
+		for (AbstractConcept subConcept : current.getSubConcepts()) {
+
+			if (subConcept instanceof EntityConcept) {
+				if (subConcept.equals(candidate)) {
+					return true;
+				} else {
+					result = result || isSubsumed((EntityConcept) subConcept, candidate);
 				}
 			}
 		}

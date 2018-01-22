@@ -1,18 +1,16 @@
 package edu.kit.ipd.parse.corefanalyzer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.kit.ipd.parse.contextanalyzer.ContextAnalyzer;
 import edu.kit.ipd.parse.contextanalyzer.data.Context;
 import edu.kit.ipd.parse.corefanalyzer.util.CorefTestHelper;
-import edu.kit.ipd.parse.corefanalyzer.util.Text;
 import edu.kit.ipd.parse.graphBuilder.GraphBuilder;
 import edu.kit.ipd.parse.luna.data.MissingDataException;
 import edu.kit.ipd.parse.luna.data.PrePipelineData;
@@ -26,18 +24,17 @@ import edu.kit.ipd.parse.srlabeler.SRLabeler;
 
 public class ObjectIdentityTest {
 
-	ShallowNLP snlp;
-	SRLabeler srLabeler;
-	NERTagger nerTagger;
-	GraphBuilder graphBuilder;
-	ContextAnalyzer contextAnalyzer;
-	CorefAnalyzer coref;
-	PrePipelineData ppd;
-	HashMap<String, Text> texts;
+	private static ShallowNLP snlp;
+	private static SRLabeler srLabeler;
+	private static NERTagger nerTagger;
+	private static ContextAnalyzer contextAnalyzer;
+	private static CorefAnalyzer coref;
+	private static GraphBuilder graphBuilder;
+	private PrePipelineData ppd;
 	private static Properties props;
 
-	@Before
-	public void setUp() {
+	@BeforeClass
+	public static void setUpClass() {
 		props = ConfigManager.getConfiguration(Domain.class);
 		props.setProperty("ONTOLOGY_PATH", "/ontology.owl");
 		props.setProperty("SYSTEM", "System");
@@ -67,11 +64,11 @@ public class ObjectIdentityTest {
 		srLabeler.init();
 		snlp = new ShallowNLP();
 		snlp.init();
-		texts = CorefTestHelper.texts;
 		contextAnalyzer = new ContextAnalyzer();
 		contextAnalyzer.init();
 		coref = new CorefAnalyzer();
 		coref.init();
+
 	}
 
 	@Ignore
