@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package edu.kit.ipd.parse.corefanalyzer;
 
@@ -35,7 +35,7 @@ import net.sf.extjwnl.dictionary.Dictionary;
  * This {@link IContextAnalyzer} analyzes the current {@link IGraph} and
  * {@link Context} for occurring {@link Entity}s without building further
  * Context from WN
- * 
+ *
  * @author Tobias Hey
  *
  */
@@ -43,7 +43,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * This enum represents the possible {@link Entity} Types
-	 * 
+	 *
 	 * @author Tobias Hey
 	 *
 	 */
@@ -58,7 +58,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Constructs new {@link BasicEntityRecognizer}
-	 * 
+	 *
 	 * @param dictionary
 	 *            The WordNet {@link Dictionary}
 	 * @param stanfordDict
@@ -73,7 +73,7 @@ public class BasicEntityRecognizer {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * edu.kit.ipd.parse.contextanalyzer.IContextAnalyzer#analyze(edu.kit.ipd.
 	 * parse.luna.graph.IGraph)
@@ -92,7 +92,7 @@ public class BasicEntityRecognizer {
 	 * Returns all {@link Entity}s occurring in the specified utterance
 	 * {@link INode}s and integrates new Information into possibly already
 	 * detected {@link Entity}s in the specified {@link Context}
-	 * 
+	 *
 	 * @param utteranceNodes
 	 * @param context
 	 * @return
@@ -166,7 +166,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Returns the {@link ObjectEntity} contained in the specified phrase
-	 * 
+	 *
 	 * @param phrase
 	 * @return
 	 */
@@ -212,7 +212,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Returns the {@link PronounEntity} contained in the specified phrase
-	 * 
+	 *
 	 * @param phrase
 	 * @return
 	 */
@@ -241,7 +241,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Returns the {@link SubjectEntity} contained in the specified phrase
-	 * 
+	 *
 	 * @param phrase
 	 * @return
 	 */
@@ -286,7 +286,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Returns the {@link SubjectEntity} contained in the specified phrase
-	 * 
+	 *
 	 * @param phrase
 	 * @return
 	 */
@@ -308,7 +308,7 @@ public class BasicEntityRecognizer {
 	/**
 	 * Returns the possible {@link EntityType} of the {@link Entity} in the
 	 * specified Noun Phrase
-	 * 
+	 *
 	 * @param phrase
 	 * @return
 	 */
@@ -338,7 +338,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Checks whether the specified phrase contains a Noun
-	 * 
+	 *
 	 * @param phrase
 	 * @return
 	 */
@@ -353,7 +353,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Returns all Conjunction in specified {@link INode}s
-	 * 
+	 *
 	 * @param list
 	 * @return
 	 */
@@ -370,7 +370,7 @@ public class BasicEntityRecognizer {
 	/**
 	 * Sets the existing {@link ConjunctionRelation}s between {@link Entity}s
 	 * next to each other
-	 * 
+	 *
 	 * @param entitiesOfNounPhrase
 	 * @param conjunctions
 	 */
@@ -389,7 +389,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * splits the specified Noun Phrase at any occurring conjunctions
-	 * 
+	 *
 	 * @param phrase
 	 * @return
 	 */
@@ -413,7 +413,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Retruns the {@link DeterminerType} of the specified lemma
-	 * 
+	 *
 	 * @param lemma
 	 */
 	private DeterminerType determineDeterminer(String lemma) {
@@ -447,7 +447,7 @@ public class BasicEntityRecognizer {
 	/**
 	 * Concatenates the specified name with the name of the specified
 	 * {@link INode}
-	 * 
+	 *
 	 * @param name
 	 * @param node
 	 * @return
@@ -465,7 +465,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Retruns the {@link GrammaticalNumber} of the specified pos tag
-	 * 
+	 *
 	 * @param gNumber
 	 * @param quantity
 	 * @param pos
@@ -502,7 +502,7 @@ public class BasicEntityRecognizer {
 	/**
 	 * Returns all {@link INode}s belonging to all noun phrases of the specified
 	 * utterance {@link INode}s
-	 * 
+	 *
 	 * @param utteranceNodes
 	 * @return
 	 */
@@ -530,7 +530,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Returns all Pronouns not contained in any noun phrase
-	 * 
+	 *
 	 * @param utteranceNodes
 	 * @return
 	 */
@@ -573,7 +573,7 @@ public class BasicEntityRecognizer {
 		String ner = (String) node.getAttributeValue("ner");
 		/*
 		 * SRL produces more failures
-		 * 
+		 *
 		 * Set<? extends IArc> srlArcs =
 		 * node.getIncomingArcsOfType(graph.getArcType(SRLabeler.
 		 * SRL_ARCTYPE_NAME)); for (IArc arc : srlArcs) { String
@@ -585,7 +585,7 @@ public class BasicEntityRecognizer {
 		 * return true; } }
 		 */
 		if (ner != null) {
-			return ner.equals("S-PER");
+			return ner.equalsIgnoreCase("S-PER") || ner.equalsIgnoreCase("PERSON");
 		} else {
 			return false;
 		}
@@ -607,7 +607,7 @@ public class BasicEntityRecognizer {
 
 	/**
 	 * Analyzes the specified name of any hints for {@link Gender}
-	 * 
+	 *
 	 * @param name
 	 * @return
 	 */
