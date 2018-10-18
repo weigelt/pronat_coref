@@ -23,7 +23,7 @@ import edu.kit.ipd.parse.ontology_connection.Domain;
 import edu.kit.ipd.parse.shallownlp.ShallowNLP;
 import edu.kit.ipd.parse.srlabeler.SRLabeler;
 
-public class AnaphoraTest {
+public class DevelopmentTests {
 
 	private static ShallowNLP snlp;
 	private static SRLabeler srLabeler;
@@ -72,11 +72,252 @@ public class AnaphoraTest {
 
 	}
 
+	// --------------------------------------------------
+	// Object Identity Tests:
+	// --------------------------------------------------
+
+	@Ignore
+	@Test
+	public void actionPossibleTest() {
+		ppd = new PrePipelineData();
+		String input = "Armar fill the cup and go to the table then pour me from it";
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
+		executeSNLPandSRLandNER(ppd);
+		try {
+			contextAnalyzer.setGraph(ppd.getGraph());
+			contextAnalyzer.exec();
+			coref.setGraph(contextAnalyzer.getGraph());
+			coref.exec();
+			Context context = coref.getContext();
+			System.out.println(input);
+			CorefTestHelper.printOutRelations(context);
+			List<int[]> expected = new ArrayList<>();
+			expected.add(new int[] { 13, 3 });
+			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
+		} catch (MissingDataException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void hypernymDerivationTest() {
+		ppd = new PrePipelineData();
+		String input = "Armar go to the dishwasher next to the fridge";
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
+		executeSNLPandSRLandNER(ppd);
+		try {
+			contextAnalyzer.setGraph(ppd.getGraph());
+			contextAnalyzer.exec();
+			coref.setGraph(contextAnalyzer.getGraph());
+			coref.exec();
+			Context context = coref.getContext();
+			System.out.println(input);
+			CorefTestHelper.printOutRelations(context);
+			List<int[]> expected = new ArrayList<>();
+			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
+		} catch (MissingDataException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void leftRight() {
+		ppd = new PrePipelineData();
+		String input = "Armar go to the fridge next to the cupboard then open the left dishwasher afterwards open the right dishwasher and close both again open the fridge and close the fridge";
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
+		executeSNLPandSRLandNER(ppd);
+		try {
+			contextAnalyzer.setGraph(ppd.getGraph());
+			contextAnalyzer.exec();
+			coref.setGraph(contextAnalyzer.getGraph());
+			coref.exec();
+			Context context = coref.getContext();
+			System.out.println(input);
+			CorefTestHelper.printOutRelations(context);
+			List<int[]> expected = new ArrayList<>();
+			expected.add(new int[] { 25, 3 });
+			expected.add(new int[] { 29, 25 });
+			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
+		} catch (MissingDataException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void hypernym() {
+		ppd = new PrePipelineData();
+		String input = "Armar bring me the lemon juice in front of the green cup then take the cup and fill it with the juice";
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
+		executeSNLPandSRLandNER(ppd);
+		try {
+			contextAnalyzer.setGraph(ppd.getGraph());
+			contextAnalyzer.exec();
+			coref.setGraph(contextAnalyzer.getGraph());
+			coref.exec();
+			Context context = coref.getContext();
+			System.out.println(input);
+			CorefTestHelper.printOutRelations(context);
+			List<int[]> expected = new ArrayList<>();
+			expected.add(new int[] { 21, 5 });
+			expected.add(new int[] { 15, 11 });
+			expected.add(new int[] { 18, 15 });
+			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
+		} catch (MissingDataException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void synonym() {
+		ppd = new PrePipelineData();
+		String input = "Armar bring me the water in front of the green cup then take the cup and fill it with the H2O";
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
+		executeSNLPandSRLandNER(ppd);
+		try {
+			contextAnalyzer.setGraph(ppd.getGraph());
+			contextAnalyzer.exec();
+			coref.setGraph(contextAnalyzer.getGraph());
+			coref.exec();
+			Context context = coref.getContext();
+			System.out.println(input);
+			CorefTestHelper.printOutRelations(context);
+			List<int[]> expected = new ArrayList<>();
+			expected.add(new int[] { 20, 4 });
+			expected.add(new int[] { 14, 10 });
+			expected.add(new int[] { 17, 14 });
+			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
+		} catch (MissingDataException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void possessivePronoun() {
+		ppd = new PrePipelineData();
+		String input = "John go to the fridge next to the two cupboards and open it then close its door again afterwards clean their doors and bring me your cup";
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
+		executeSNLPandSRLandNER(ppd);
+		try {
+			contextAnalyzer.setGraph(ppd.getGraph());
+			contextAnalyzer.exec();
+			coref.setGraph(contextAnalyzer.getGraph());
+			coref.exec();
+			Context context = coref.getContext();
+			System.out.println(input);
+			CorefTestHelper.printOutRelations(context);
+			List<int[]> expected = new ArrayList<>();
+			expected.add(new int[] { 12, 4 });
+			expected.add(new int[] { 15, 12 });
+			expected.add(new int[] { 25, 0 });
+			expected.add(new int[] { 20, 7 });
+
+			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
+		} catch (MissingDataException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void relClause() {
+		ppd = new PrePipelineData();
+		String input = "John go to the fridge which is next to the two cupboards and open it then close its door again";
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
+		executeSNLPandSRLandNER(ppd);
+		try {
+			contextAnalyzer.setGraph(ppd.getGraph());
+			contextAnalyzer.exec();
+			coref.setGraph(contextAnalyzer.getGraph());
+			coref.exec();
+			Context context = coref.getContext();
+			System.out.println(input);
+			CorefTestHelper.printOutRelations(context);
+			List<int[]> expected = new ArrayList<>();
+			expected.add(new int[] { 14, 4 });
+			expected.add(new int[] { 17, 14 });
+			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
+		} catch (MissingDataException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	// --------------------------------------------------
+	// Subject Identity Tests:
+	// --------------------------------------------------
+
+	@Test
+	public void subjectIdentity() {
+		ppd = new PrePipelineData();
+		String input = "Armar go to the fridge next to Mary and John then go to Mary and afterwards Armar could you open it";
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
+		executeSNLPandSRLandNER(ppd);
+		try {
+			contextAnalyzer.setGraph(ppd.getGraph());
+			contextAnalyzer.exec();
+			coref.setGraph(contextAnalyzer.getGraph());
+			coref.exec();
+			Context context = coref.getContext();
+			System.out.println(input);
+			CorefTestHelper.printOutRelations(context);
+			List<int[]> expected = new ArrayList<>();
+			expected.add(new int[] { 13, 7 });
+			expected.add(new int[] { 16, 0 });
+			expected.add(new int[] { 18, 16 });
+			expected.add(new int[] { 20, 4 });
+			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
+		} catch (MissingDataException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	//TODO resolve smith entity
+	@Ignore
+	@Test
+	public void diffIdentity() {
+		ppd = new PrePipelineData();
+		String input = "Mary stands next to Mr. Smith tell her she should go to John Smith ";
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
+		executeSNLPandSRLandNER(ppd);
+		try {
+			contextAnalyzer.setGraph(ppd.getGraph());
+			contextAnalyzer.exec();
+			coref.setGraph(contextAnalyzer.getGraph());
+			coref.exec();
+			Context context = coref.getContext();
+			System.out.println(input);
+			CorefTestHelper.printOutRelations(context);
+			List<int[]> expected = new ArrayList<>();
+			expected.add(new int[] { 12, 7 });
+			expected.add(new int[] { 7, 0 });
+			expected.add(new int[] { 8, 7 });
+			CorefTestHelper.printResult(CorefTestHelper.checkCorefChains(context, expected), expected);
+		} catch (MissingDataException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
 	@Test
 	public void groupTest() {
 		ppd = new PrePipelineData();
 		String input = "Armar go to the fridge and cupboard and then to the two dishwashers then close them";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -99,7 +340,7 @@ public class AnaphoraTest {
 	public void superObject() {
 		ppd = new PrePipelineData();
 		String input = "John go to the small fridge next to the two cupboards and open it then close the door again.";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -122,7 +363,7 @@ public class AnaphoraTest {
 	public void groupTest2() {
 		ppd = new PrePipelineData();
 		String input = "Armar go to the fridge and cupboard and then to the dishwasher then close them";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -147,7 +388,7 @@ public class AnaphoraTest {
 	public void groupTest3() {
 		ppd = new PrePipelineData();
 		String input = "Armar bring me the orange juice and the cup then put them both on the table";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -171,7 +412,7 @@ public class AnaphoraTest {
 	public void subjectGroup() {
 		ppd = new PrePipelineData();
 		String input = "John and Mary are in the kitchen bring them the dishes";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -195,7 +436,7 @@ public class AnaphoraTest {
 	public void subjectGroupLocative() {
 		ppd = new PrePipelineData();
 		String input = "John and Mary next to the fridge and cupboard want the plate bring them the plate";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -216,12 +457,16 @@ public class AnaphoraTest {
 
 	}
 
+	// --------------------------------------------------
+	// Anaphora Tests:
+	// --------------------------------------------------
+
 	@Ignore
 	@Test
 	public void diffTest() {
 		ppd = new PrePipelineData();
 		String input = "John close the cupboard then open the dishwasher and get the cup out of the dishwasher then close it again";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -248,7 +493,7 @@ public class AnaphoraTest {
 	public void diffTest2() {
 		ppd = new PrePipelineData();
 		String input = "Armar please go to the dishwasher and open it then go to the table take the glass and put it into the dishwasher after you have closed its door again go to the fridge";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -277,7 +522,7 @@ public class AnaphoraTest {
 	public void multiple() {
 		ppd = new PrePipelineData();
 		String input = "Armar go to the fridge and open it and close it again then go to the dishwasher and open the fridge";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			Context prev = new Context();
@@ -313,7 +558,7 @@ public class AnaphoraTest {
 	public void multiplePossessive() {
 		ppd = new PrePipelineData();
 		String input = "Please go to the fridge and open its door and take the cup out then close its door again";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			Context prev = new Context();
@@ -348,7 +593,7 @@ public class AnaphoraTest {
 	public void multipleAdjective() {
 		ppd = new PrePipelineData();
 		String input = "Take the dirty cup fill it and bring it to me then take the empty cup";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			Context prev = new Context();
@@ -383,7 +628,7 @@ public class AnaphoraTest {
 	public void multipleScenario1() {
 		ppd = new PrePipelineData();
 		String input = "Armar get the green cup from the table next to the popcorn and go to the fridge then open the fridge and take the water out of it afterwards fill the cup with water and bring it to me then take the red cups out of the dishwasher and put them in the cupboard";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			Context prev = new Context();
@@ -422,7 +667,7 @@ public class AnaphoraTest {
 	public void multipleScenario2() {
 		ppd = new PrePipelineData();
 		String input = "Armar take a plate out of the dishwasher and put it on the table then open the fridge and take the instant meal out of it afterwards put the meal on the plate and put it into the microwave when it is finished put the plate on the table";
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			Context prev = new Context();

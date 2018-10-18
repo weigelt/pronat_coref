@@ -135,7 +135,7 @@ public class ContextPaperTest {
 	private Context execute(String input) {
 		ppd = new PrePipelineData();
 
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executeSNLPandSRLandNER(ppd);
 		try {
 			Context prev = new Context();

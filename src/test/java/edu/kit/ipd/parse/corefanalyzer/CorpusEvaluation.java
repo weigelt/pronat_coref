@@ -106,7 +106,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("1.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -132,7 +132,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("1.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -158,7 +158,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("1.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -183,7 +183,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("2.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -209,7 +209,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("2.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -234,7 +234,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("2.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -258,7 +258,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("3.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -283,7 +283,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("3.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -308,7 +308,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("3.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			Context prev = new Context();
@@ -343,7 +343,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("3.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -367,7 +367,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("4.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -392,7 +392,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("4.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -416,7 +416,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("4.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -440,7 +440,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("5.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -465,7 +465,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("5.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -489,7 +489,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("5.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -513,7 +513,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("6.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -537,7 +537,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("6.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -561,7 +561,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("6.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -585,7 +585,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("7.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -608,7 +608,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("7.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -631,7 +631,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("7.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -654,7 +654,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("8.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -677,7 +677,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("8.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -700,7 +700,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("8.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -723,7 +723,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("9.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -746,7 +746,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("9.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -770,7 +770,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("9.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -793,7 +793,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("10.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -816,7 +816,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("10.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -839,7 +839,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("10.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -862,7 +862,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("11.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -885,7 +885,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("11.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -908,7 +908,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("11.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			contextAnalyzer.setGraph(ppd.getGraph());
@@ -931,7 +931,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.4.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -954,7 +954,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.4.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -977,7 +977,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.4.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1000,7 +1000,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.4.4");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1023,7 +1023,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.4.5");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1046,7 +1046,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.4.6");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1069,7 +1069,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.4.7");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1092,7 +1092,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.4.8");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1115,7 +1115,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.4.9");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1139,7 +1139,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.5.1");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1162,7 +1162,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.5.2");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1185,7 +1185,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.5.3");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1208,7 +1208,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.5.4");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1231,7 +1231,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.5.5");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1254,7 +1254,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.5.6");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1277,7 +1277,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.5.7");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1300,7 +1300,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.5.8");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1323,7 +1323,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("if.5.9");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			executePrevAgents(ppd.getGraph());
@@ -1347,7 +1347,7 @@ public class CorpusEvaluation {
 		Text text = texts.get("s6p05");
 		String input = text.getText();
 		List<int[]> expected = text.getRefs();
-		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+		ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 		executePrepipeline(ppd);
 		try {
 			Context prev = new Context();
@@ -1389,7 +1389,7 @@ public class CorpusEvaluation {
 			ppd = new PrePipelineData();
 			Text text = texts.get(id);
 			String input = text.getText();
-			ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+			ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 			executePrepipeline(ppd);
 			try {
 				contextAnalyzer.setGraph(ppd.getGraph());
@@ -1427,7 +1427,7 @@ public class CorpusEvaluation {
 				ppd = new PrePipelineData();
 				Text text = texts.get(id);
 				String input = text.getText();
-				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 				System.out.println(id + ":");
 				try {
 					snlp.exec(ppd);
@@ -1455,7 +1455,7 @@ public class CorpusEvaluation {
 				Text text = texts.get(id);
 				String input = text.getText();
 				List<int[]> expected = text.getRefs();
-				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 				System.out.println(id);
 				executePrepipeline(ppd);
 				try {
@@ -1508,7 +1508,7 @@ public class CorpusEvaluation {
 			Text text = texts.get(id);
 			String input = text.getText();
 			List<int[]> expected = text.getRefs();
-			ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+			ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 			System.out.println(id);
 			executePrepipeline(ppd);
 
@@ -1577,7 +1577,7 @@ public class CorpusEvaluation {
 				Text text = texts.get(id);
 				String input = text.getText();
 				List<int[]> expected = text.getRefs();
-				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 				System.out.println(id);
 				executePrepipeline(ppd);
 
@@ -1645,7 +1645,7 @@ public class CorpusEvaluation {
 				Text text = texts.get(id);
 				String input = text.getText();
 				List<int[]> expected = text.getRefs();
-				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 				System.out.println(id);
 				executePrepipeline(ppd);
 
@@ -1709,7 +1709,7 @@ public class CorpusEvaluation {
 				ppd = new PrePipelineData();
 				Text text = texts.get(id);
 				String input = text.getText();
-				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 				System.out.println(id);
 				executePrepipeline(ppd);
 
@@ -1778,7 +1778,7 @@ public class CorpusEvaluation {
 				ppd = new PrePipelineData();
 				Text text = texts.get(id);
 				String input = text.getText();
-				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input));
+				ppd.setMainHypothesis(StringToHypothesis.stringToMainHypothesis(input, false));
 				System.out.println(id);
 				executePrepipeline(ppd);
 
