@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package edu.kit.ipd.parse.corefanalyzer.data;
 
@@ -12,7 +12,7 @@ import edu.kit.ipd.parse.contextanalyzer.data.entities.Entity;
  * @author Tobias Hey
  *
  */
-public class ReferentCandidate implements Comparable<ReferentCandidate> {
+public class ReferentCandidate implements Comparable<ReferentCandidate>, Cloneable {
 
 	private List<Entity> referents;
 	private double confidence;
@@ -52,7 +52,7 @@ public class ReferentCandidate implements Comparable<ReferentCandidate> {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public Entity getCandidate() {
