@@ -75,4 +75,7 @@
 			<artifactId>context</artifactId>
 		</dependency>
 	</dependencies>
+        <properties>
+                <parse_bundle.directory>../parse_bundle</parse_bundle.directory>
+        </properties>
 </project>
