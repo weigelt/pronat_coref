@@ -47,8 +47,8 @@ public class ConceptMatchSieve extends Sieve {
 					if (!currentConcept.equals(candidateConcept)) {
 						if (!(currentConcept.getEqualConcepts().contains(candidateConcept)
 								|| candidateConcept.getEqualConcepts().contains(currentConcept))) {
-							if (!(currentConcept.getSynonyms().contains(candidateConcept.getName())
-									|| candidateConcept.getSynonyms().contains(currentConcept.getName()))) {
+							if (!(currentConcept.getSynonyms().stream().anyMatch(candidateConcept.getName()::equalsIgnoreCase)
+									|| candidateConcept.getSynonyms().stream().anyMatch(currentConcept.getName()::equalsIgnoreCase))) {
 
 								if (!isSubsumed(currentConcept, candidateConcept)) {
 									result.remove(entity);
