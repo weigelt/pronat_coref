@@ -46,7 +46,7 @@ public final class CorefTestHelper {
 	static {
 		texts = new HashMap<String, Text>();
 		try {
-			File file = new File(CorefTestHelper.class.getResource("/korpus_noAlternatives.xml").toURI());
+			File file = new File(CorefTestHelper.class.getResource("/korpus.xml").toURI());
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(file);

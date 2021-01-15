@@ -43,7 +43,7 @@ public class ContextPaperTest {
 	@BeforeClass
 	public static void setUpClass() {
 		props = ConfigManager.getConfiguration(Domain.class);
-		props.setProperty("ONTOLOGY_PATH", "/ontology.owl");
+		props.setProperty("ONTOLOGY_PATH", "/vamos_ontology.owl");
 		props.setProperty("SYSTEM", "System");
 		props.setProperty("METHOD", "Method");
 		props.setProperty("PARAMETER", "Parameter");
