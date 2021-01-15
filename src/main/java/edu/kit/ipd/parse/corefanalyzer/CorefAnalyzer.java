@@ -30,6 +30,10 @@ public class CorefAnalyzer extends AbstractAgent {
 
 	private static final Logger logger = LoggerFactory.getLogger(CorefAnalyzer.class);
 
+	public CorefAnalyzer() {
+		setId(ID);
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -39,8 +43,6 @@ public class CorefAnalyzer extends AbstractAgent {
 	public void init() {
 		props = new Properties();
 		props = ConfigManager.getConfiguration(CorefAnalyzer.class);
-		setId(ID);
-
 	}
 
 	/*
@@ -80,7 +82,7 @@ public class CorefAnalyzer extends AbstractAgent {
 	 * @return the current context from the {@link IGraph}
 	 */
 	Context readContextFromGraph() {
-		this.context = Context.readFromGraph(graph);
+		context = Context.readFromGraph(graph);
 		return context;
 	}
 
